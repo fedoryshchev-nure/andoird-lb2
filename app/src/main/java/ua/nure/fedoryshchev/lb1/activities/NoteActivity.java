@@ -37,6 +37,15 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        if (viewModel.Note.getValue().GetImage() != null)
+            imageViewIcon.setImageBitmap(viewModel.Note.getValue().GetImage());
+
+     super.onSaveInstanceState(savedInstanceState);
+    }
+
+
+    @Override
     public void onBackPressed() {
         Intent intent = new Intent();
         intent.putExtra(Note.class.getName(), viewModel.Note.getValue());

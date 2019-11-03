@@ -50,9 +50,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Enter Title"
+                    android:hint="@string/enter_title"
                     android:inputType="textPersonName"
-                    android:text="@={viewModel.Note.Title}"/>
+                    android:text="@={viewModel.Note.Title}" />
 
                 <EditText
                     android:id="@+id/editDescription"
@@ -60,9 +60,9 @@
                     android:layout_height="129dp"
                     android:ems="10"
                     android:foregroundGravity="top"
-                    android:hint="Enter Description"
+                    android:hint="@string/enter_description"
                     android:inputType="textPersonName"
-                    android:text="@={viewModel.Note.Description}"/>
+                    android:text="@={viewModel.Note.Description}" />
 
                 <RadioGroup
                     android:layout_width="match_parent"
@@ -72,25 +72,25 @@
                         android:id="@+id/radioButtonLowImportance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Low"
                         android:checked="@{viewModel.Note.Importance.equals(importance.Low)}"
-                        android:onClick="@{() -> viewModel.setImportance(importance.Low)}"/>
+                        android:onClick="@{() -> viewModel.setImportance(importance.Low)}"
+                        android:text="@string/low" />
 
                     <RadioButton
                         android:id="@+id/radioButtonMediumImportance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Medium"
                         android:checked="@{viewModel.Note.Importance.equals(importance.Medium)}"
-                        android:onClick="@{() -> viewModel.setImportance(importance.Medium)}"/>
+                        android:onClick="@{() -> viewModel.setImportance(importance.Medium)}"
+                        android:text="@string/medium" />
 
                     <RadioButton
                         android:id="@+id/radioButtonHighImportance"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="High"
                         android:checked="@{viewModel.Note.Importance.equals(importance.High)}"
-                        android:onClick="@{() -> viewModel.setImportance(importance.High)}"/>
+                        android:onClick="@{() -> viewModel.setImportance(importance.High)}"
+                        android:text="@string/high" />
 
                 </RadioGroup>
 

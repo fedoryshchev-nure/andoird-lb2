@@ -3,12 +3,17 @@ package ua.nure.fedoryshchev.lb1.utils;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -17,11 +22,21 @@ import java.util.ArrayList;
 import ua.nure.fedoryshchev.lb1.R;
 import ua.nure.fedoryshchev.lb1.models.Note;
 
-public class NotesAdapter extends ArrayAdapter<Note> {
+public class NotesAdapter extends ArrayAdapter<Note> implements Filterable {
+    private ArrayList<Note> originalNotes;
+    private ArrayList<Note> filteredNotes;
+    private NotesFilter filter;
+    private Context context;
+
     public NotesAdapter(Context context, ArrayList<Note> notes) {
         super(context, 0, notes);
+        this.context = context;
+        originalNotes = notes;
+        filteredNotes = notes;
+        filter = new NotesFilter();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Note note = getItem(position);
@@ -39,6 +54,7 @@ public class NotesAdapter extends ArrayAdapter<Note> {
         TextView textViewDate = convertView.findViewById(R.id.item_note_date);
         ImageView imageViewImportance = convertView.findViewById(R.id.imageViewImportance);
 
+        imageViewIcon.setImageDrawable(context.getDrawable(R.drawable.ef_image_placeholder));
         if (note.GetImage() != null) {
             File imgFile = new  File(note.GetImagePath());
             if (imgFile.exists()) {
@@ -55,5 +71,22 @@ public class NotesAdapter extends ArrayAdapter<Note> {
         imageViewImportance.setColorFilter(Color.parseColor(color));
 
         return convertView;
+    }
+
+    public Filter getFilter() {
+        return filter;
+    }
+
+    private class NotesFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            return null;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+        }
     }
 }

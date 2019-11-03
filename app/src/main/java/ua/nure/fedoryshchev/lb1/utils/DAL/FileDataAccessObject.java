@@ -51,7 +51,7 @@ public class FileDataAccessObject implements IDataAccessObject {
     }
 
     public ArrayList<Note> Get() {
-        return notes;
+        return new ArrayList<>(notes);
     }
 
     public void AddOrUpdate(Note note) {

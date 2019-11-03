@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Федорищев ЛБ1 </string>
+    <string name="action_settings">Налаштування</string>
+    <string name="confirm_title">Видалення замітки</string>
+    <string name="confirm_text">Ви впевненi, що бажаєте видалити замітку?</string>
+    <string name="yes">Так</string>
+    <string name="no">Ні</string>
+    <string name="add">Додати</string>
+    <string name="search">Пошук</string>
+    <string name="all">Всі</string>
+    <string name="low">Мала</string>
+    <string name="medium">Середня</string>
+    <string name="high">Велика</string>
+    <string name="filter">Фільтрування</string>
+    <string name="enter_description">Введіть Опис</string>
+    <string name="enter_title">Введіть Назву</string>
+</resources>
