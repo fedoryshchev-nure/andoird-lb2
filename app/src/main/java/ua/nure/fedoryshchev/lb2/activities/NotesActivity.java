@@ -1,6 +1,7 @@
-package ua.nure.fedoryshchev.lb1.activities;
+package ua.nure.fedoryshchev.lb2.activities;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -18,15 +19,17 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import ua.nure.fedoryshchev.lb1.R;
-import ua.nure.fedoryshchev.lb1.models.Importance;
-import ua.nure.fedoryshchev.lb1.models.Note;
-import ua.nure.fedoryshchev.lb1.utils.DAL.Repository;
-import ua.nure.fedoryshchev.lb1.utils.NotesAdapter;
+import ua.nure.fedoryshchev.lb2.R;
+import ua.nure.fedoryshchev.lb2.models.Importance;
+import ua.nure.fedoryshchev.lb2.models.Note;
+import ua.nure.fedoryshchev.lb2.utils.DAL.Repository;
+import ua.nure.fedoryshchev.lb2.utils.NotesAdapter;
 
 public class NotesActivity extends AppCompatActivity {
     Repository repository;
@@ -37,8 +40,12 @@ public class NotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
-        repository = new Repository(getBaseContext().getFilesDir().getPath());
-        adapter = new NotesAdapter(this, repository.Get());
+        repository = new Repository(this);
+        adapter = new NotesAdapter(this, new ArrayList<>());
+
+        MyAsyncTask task = new MyAsyncTask();
+        task.execute();
+
         ListView lv = findViewById(R.id.lstView);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener((adapterView, view, i, l) -> {
@@ -94,6 +101,28 @@ public class NotesActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private class MyAsyncTask extends AsyncTask {
+
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            setNotes(repository.Get());
+
+            return null;
+        }
+    }
+
+    private class MyFilterAsyncTask extends AsyncTask {
+
+        @RequiresApi(api = Build.VERSION_CODES.N)
+        @Override
+        protected Object doInBackground(Object[] objects) {
+            filerNotes();
+
+            return null;
+        }
     }
 
     @Override
@@ -178,7 +207,7 @@ public class NotesActivity extends AppCompatActivity {
     }
 
     public void openDetailsPage(View view) {
-        openDetailsPage(view, new Note(repository.GetNextId()));
+        openDetailsPage(view, new Note());
     }
 
     public void openDetailsPage(View view, Note note) {
@@ -192,7 +221,7 @@ public class NotesActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        MyFilterAsyncTask t = new MyFilterAsyncTask();
         Note note = data.getExtras().getParcelable(Note.class.getName());
         if (resultCode == RESULT_OK) {
             repository.AddOrUpdate(note);

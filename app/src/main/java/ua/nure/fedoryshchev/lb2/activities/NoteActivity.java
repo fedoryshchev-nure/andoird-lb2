@@ -1,4 +1,4 @@
-package ua.nure.fedoryshchev.lb1.activities;
+package ua.nure.fedoryshchev.lb2.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -12,10 +12,10 @@ import android.widget.ImageView;
 import com.esafirm.imagepicker.features.ImagePicker;
 import com.esafirm.imagepicker.model.Image;
 
-import ua.nure.fedoryshchev.lb1.R;
-import ua.nure.fedoryshchev.lb1.databinding.ActivityNoteBinding;
-import ua.nure.fedoryshchev.lb1.models.Note;
-import ua.nure.fedoryshchev.lb1.models.NoteViewModel;
+import ua.nure.fedoryshchev.lb2.R;
+import ua.nure.fedoryshchev.lb2.databinding.ActivityNoteBinding;
+import ua.nure.fedoryshchev.lb2.models.Note;
+import ua.nure.fedoryshchev.lb2.models.NoteViewModel;
 
 public class NoteActivity extends AppCompatActivity {
     private NoteViewModel viewModel;

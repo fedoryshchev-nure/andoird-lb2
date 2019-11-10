@@ -6,10 +6,10 @@
     <data>
         <variable
             name="viewModel"
-            type="ua.nure.fedoryshchev.lb1.models.NoteViewModel" />
+            type="ua.nure.fedoryshchev.lb2.models.NoteViewModel" />
         <variable
             name="importance"
-            type="ua.nure.fedoryshchev.lb1.models.Importance" />
+            type="ua.nure.fedoryshchev.lb2.models.Importance" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

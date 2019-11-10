@@ -1,4 +1,4 @@
-package ua.nure.fedoryshchev.lb1.models;
+package ua.nure.fedoryshchev.lb2.models;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class Note implements Parcelable {
     public Note(int id) {
-        this(id,"", "", ua.nure.fedoryshchev.lb1.models.Importance.Low, "");
+        this(id,"", "", ua.nure.fedoryshchev.lb2.models.Importance.Low, "");
     }
 
     public Note(Integer id,
@@ -46,6 +46,11 @@ public class Note implements Parcelable {
     public String Description;
     public Importance Importance;
     private String imagePath;
+
+    public Note() {
+        this(-1);
+    }
+
     public String GetImagePath() { return imagePath; }
     public void SetImagePath(String imagePath) {
         this.imagePath = imagePath;

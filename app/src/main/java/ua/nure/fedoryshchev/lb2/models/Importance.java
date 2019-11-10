@@ -1,4 +1,4 @@
-package ua.nure.fedoryshchev.lb1.models;
+package ua.nure.fedoryshchev.lb2.models;
 
 public enum Importance {
     Low,

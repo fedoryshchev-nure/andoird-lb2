@@ -1,4 +1,4 @@
-package ua.nure.fedoryshchev.lb1.utils;
+package ua.nure.fedoryshchev.lb2.utils;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -19,8 +19,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
-import ua.nure.fedoryshchev.lb1.R;
-import ua.nure.fedoryshchev.lb1.models.Note;
+import ua.nure.fedoryshchev.lb2.R;
+import ua.nure.fedoryshchev.lb2.models.Note;
 
 public class NotesAdapter extends ArrayAdapter<Note> implements Filterable {
     private ArrayList<Note> originalNotes;

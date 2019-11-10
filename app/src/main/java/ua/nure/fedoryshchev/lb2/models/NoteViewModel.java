@@ -1,4 +1,4 @@
-package ua.nure.fedoryshchev.lb1.models;
+package ua.nure.fedoryshchev.lb2.models;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;

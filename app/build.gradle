@@ -8,7 +8,7 @@ android {
     }
     buildToolsVersion "29.0.2"
     defaultConfig {
-        applicationId "ua.nure.fedoryshchev.lb1"
+        applicationId "ua.nure.fedoryshchev.lb2"
         minSdkVersion 14
         targetSdkVersion 29
         versionCode 1

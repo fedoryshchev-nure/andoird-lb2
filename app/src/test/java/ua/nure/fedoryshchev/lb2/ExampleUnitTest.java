@@ -1,4 +1,4 @@
-package ua.nure.fedoryshchev.lb1;
+package ua.nure.fedoryshchev.lb2;
 
 import org.junit.Test;
 
